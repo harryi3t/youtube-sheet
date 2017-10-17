@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+  <% include ../partials/nav.ejs %>
+
+<div class="jumbotron text-center">
+  <div class="container" style="margin-top:-50px">
+    <center>
+      <div style="display:none;" class="html5gallery" data-skin="gallery" data-width="940" data-height="480">
+        <!-- Add Youtube video to Gallery -->
+        <% videos.forEach(function (video) { %>
+          <a href="<%= video.url %>">
+            <img src="<%= video.image %>" alt="<%= video.title %>">
+          </a>
+        <% }) %>
+      </div>
+    </center>
+  </div>
+</div>
+
+</body>
+</html>
