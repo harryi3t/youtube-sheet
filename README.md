@@ -1,39 +1,18 @@
-# node-js-getting-started
+# Youtube Sheet
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+I created this project to test how to use a google spreadsheet as a database.
 
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+This project uses a hard-coded spreadsheet as a tiny database. The sheet contains URLs of some youtube videos. The application loads the videos from the sheet. So when you update the sheet and reload the app, it updates with the new videos.
 
-## Running Locally
+I have enabled public access (only view) to the sheet used in this project.
+https://docs.google.com/spreadsheets/d/1GRL0ztqPSLk8ClW1octpB0HSKKp3RVJITm0q3Lw2QYc/edit?usp=sharing
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku CLI](https://cli.heroku.com/) installed.
-
-```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
-$ npm install
-$ npm start
+# Deployed to Heroku
+This application is hosted on https://harryi3t-youtube-sheet.herokuapp.com
+You can host you own, just make sure these two environment variables are present
 ```
-
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-## Deploying to Heroku
-
+CLIENT_EMAIL
+PRIVATE_KEY
 ```
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
-or
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-## Documentation
-
-For more information about using Node.js on Heroku, see these Dev Center articles:
-
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+You can get these credentials from google developer console.
+You can also follow this tutorial to learn how to use sheet api https://codelabs.developers.google.com/codelabs/sheets-api/#3
