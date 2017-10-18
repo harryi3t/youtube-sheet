@@ -30,6 +30,8 @@ app.get('/', function (request, response) {
         videos: []
     };
 
+    console.log(request.ip);
+
     spreadsheet.getRows(1, {}, (err, rows) => {
         if (err) {
             console.log('error', err);
