@@ -1,5 +1,5 @@
 {
-  "name": "node-js-getting-started",
+  "name": "youtube-sheet",
   "version": "0.2.6",
   "description": "A sample Node.js app using Express 4",
   "engines": {
@@ -7,8 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
@@ -18,17 +17,15 @@
     "googleapis": "^22.2.0"
   },
   "devDependencies": {
-    "request": "^2.81.0",
-    "tape": "^4.7.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/harryi3t/youtube-sheet"
   },
   "keywords": [
     "node",
-    "heroku",
-    "express"
+    "youtube",
+    "spreadsheet"
   ],
   "license": "MIT"
 }
