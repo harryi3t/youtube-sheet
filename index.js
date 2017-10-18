@@ -2,13 +2,15 @@ require('dotenv').config();
 
 var express = require('express'),
     async = require('async'),
-    googleApi = require('./lib/googleApi'),
+    _ = require('lodash'),
+    GoogleSpreadsheet = require('google-spreadsheet'),
 
-    spreatsheetId = '1GRL0ztqPSLk8ClW1octpB0HSKKp3RVJITm0q3Lw2QYc',
+    spreadsheetId = '1GRL0ztqPSLk8ClW1octpB0HSKKp3RVJITm0q3Lw2QYc',
     credentials = {
         private_key: JSON.parse(`"${process.env.PRIVATE_KEY}"`),
         client_email: JSON.parse(`"${process.env.CLIENT_EMAIL}"`)
     },
+    spreadsheet = new GoogleSpreadsheet(spreadsheetId),
     app = express();
 
 app.set('port', (process.env.PORT || 5000));
@@ -18,25 +20,20 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+spreadsheet.useServiceAccountAuth(credentials, _.noop);
+
 app.get('/', function (request, response) {
     var data = {
         videos: []
     };
 
-    async.series([
-        function init(next) {
-            return googleApi.init(spreatsheetId, credentials, next);
-        },
-        function getRows(next) {
-            return googleApi.getRows(1, next);
-        }
-    ], (err, accumulatedData) => {
+    spreadsheet.getRows(1, {}, (err, rows) => {
         if (err) {
             console.log('error', err);
             return response.render('pages/index', data);
         }
 
-        data.videos = accumulatedData[1].map(row => {
+        data.videos = rows.map(row => {
             var match = row.url.match(/(watch\?v=|embed\/)(.*)/),
                 videoId = match && match[2];
 
